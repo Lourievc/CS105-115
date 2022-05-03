@@ -1,0 +1,66 @@
+//Lourie Valenzuela 
+package week1;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class lab1a {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        String input;
+        int num = 0;
+        boolean done = false;
+
+        System.out.println("In this program you will enter a list of numbers.");
+
+
+        while (!done) {
+            System.out.print("\nPlease enter a number (or hit the <Enter> key to stop): ");
+            input = in.nextLine();
+
+            if (input.equals("")) {
+                done = true;
+            } else
+                try {
+                    num = Integer.parseInt(input);
+                    numbers.add(num);
+                } catch (Exception e) {
+                    System.out.println("\nInvalid number. ");
+                }
+        } // end of while
+
+
+        System.out.println("\n\nThe sum of the list of numbers is: " + addNumbers(numbers));
+        System.out.print("\nThe largest number in the list is: " + largestNumber(numbers));
+
+    }// end of main()
+
+
+    public static int addNumbers(ArrayList<Integer> numbers) {
+        int totalValue = 0;
+        for (int i = 0; i < numbers.size(); i++) {
+            totalValue = totalValue + numbers.get(i);
+        }
+
+        return totalValue;
+    }// end of addNumbers method
+
+
+    public static int largestNumber(ArrayList<Integer> numbers) {
+        int lNumber = 0;
+        for (int i = 0; i < numbers.size(); i++) {
+            if (i == 0) {
+                lNumber = numbers.get(i);
+            } else {
+                if (numbers.get(i) > lNumber) {
+                    lNumber = numbers.get(i);
+                }
+            }
+        }
+
+        return lNumber;
+    }// end of largestNumber method
+
+}// end of class
